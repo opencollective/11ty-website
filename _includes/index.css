@@ -472,7 +472,9 @@ footer.elv-layout {
 }
 .elv-header-docs .elv-possum {
 	width: 15vw;
+	height: 27.225vw;
 	max-width: 6.25rem; /* 100px /16 */
+	max-height: 11.3125rem; /* 181px /16 */
 }
 .elv-header-default {
 	overflow: hidden;

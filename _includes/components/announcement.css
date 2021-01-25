@@ -1,5 +1,6 @@
 .announcement {
 	display: block;
+	width: 100%;
 	background-color: #111;
 	font-weight: 500;
 	padding: .25em 1em;
@@ -37,5 +38,18 @@
 .announcement a:after {
 	display: none;
 }
-
-
+.announcement-close {
+	background-color: rgba(255,255,255,.04);
+	border: none;
+	color: inherit;
+	font-size: inherit;
+	font-weight: 100;
+	flex-grow: 999;
+	padding-top: .5em;
+	padding-bottom: .5em;
+	letter-spacing: .5px;
+}
+.announcement-close:hover,
+.announcement-close:focus {
+	background-color: rgba(255,255,255,.1);
+}

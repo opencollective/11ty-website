@@ -40,7 +40,7 @@ module.exports = function(eleventyConfig) {
 };
 ```
 
-You are responsible for including your favorite PrismJS theme CSS and there are many ways to do that. The default themes are provided by [several CDNs](https://prismjs.com/#basic-usage-cdn) and could be easily included in a base layout, like in the example bellow;
+You are responsible for including your favorite PrismJS theme CSS and there are many ways to do that. The default themes are provided by [several CDNs](https://prismjs.com/#basic-usage-cdn) and could be easily included in a base layout, like in the example below;
 
 ```html
 <html lang="en">
@@ -61,10 +61,10 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight, {
 
-    // Change which syntax highlighters are installed
+    // Change which Eleventy template formats use syntax highlighters
     templateFormats: ["*"], // default
 
-    // Or, just njk and md syntax highlighters (do not install liquid)
+    // e.g. Use syntax highlighters in njk and md Eleventy templates (not liquid)
     // templateFormats: ["njk", "md"],
 
     // init callback lets you customize Prism
@@ -74,7 +74,14 @@ module.exports = function(eleventyConfig) {
 
     // Added in 3.0, set to true to always wrap lines in `<span class="highlight-line">`
     // The default (false) only wraps when line numbers are passed in.
-    alwaysWrapLineHighlights: false
+    alwaysWrapLineHighlights: false,
+
+    // Added in 3.0.2, set to false to opt-out of pre-highlight removal of leading
+    // and trailing whitespace
+    trim: true,
+    
+    // Added in 3.0.4, change the separator between lines (you may want "\n")
+    lineSeparator: "<br>",
   });
 };
 ```

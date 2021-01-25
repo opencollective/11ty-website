@@ -19,7 +19,7 @@ const objectHas = require("./config/object-has");
 // Load yaml from Prism to highlight frontmatter
 loadLanguages(['yaml']);
 
-let defaultAvatarHtml = `<img src="/img/default-avatar.png" alt="Default Avatar" loading="lazy" class="avatar">`;
+let defaultAvatarHtml = `<img src="/img/default-avatar.png" alt="Default Avatar" loading="lazy" class="avatar" width="200" height="200">`;
 const shortcodes = {
 	avatarlocalcache: function(datasource, slug, alt = "") {
 		if(!slug) {
@@ -41,7 +41,7 @@ const shortcodes = {
 		}
 		let otherSrc = mapEntry.jpeg || mapEntry.png;
 
-		ret.push(`<img src="${otherSrc[0].url}" alt="${alt || `${slug}’s ${datasource} avatar`}" loading="lazy" class="avatar">`);
+		ret.push(`<img src="${otherSrc[0].url}" alt="${alt || `${slug}’s ${datasource} avatar`}" loading="lazy" class="avatar" width="${otherSrc[0].width}" height="${otherSrc[0].height}">`);
 		if(mapEntry.webp) {
 			ret.push("</picture>");
 		}
@@ -486,7 +486,7 @@ ${text.trim()}
 	});
 
 	eleventyConfig.addFilter("supportersFacepile", (supporters) => {
-		return supporters.filter(supporter => supporter.role === "BACKER" && supporter.tier && supporter.isActive && supporter.tier != "Gold Sponsor");
+		return supporters.filter(supporter => supporter.status === 'ACTIVE' && supporter.tier && supporter.tier.slug !== "gold-sponsor");
 	});
 
 	// Sort an object that has `order` props in values. Return an array
